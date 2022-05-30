@@ -25,6 +25,17 @@ class SinglyLinkedList {
     this.length++;
     return this;
   }
+  pop() {
+    // we can check length=0
+    if (!this.head) return "Plaese push the data!";
+    let current = this.head;
+    let newTail = current;
+    while (current.next) {
+      newTail = current;
+      current = current.next;
+      console.log(newTail);
+    }
+  }
 }
 
 let linkedList = new SinglyLinkedList();
@@ -33,4 +44,5 @@ linkedList.push("hello");
 linkedList.push("man");
 
 linkedList.push("??");
-console.log(linkedList);
+linkedList.pop();
+// console.log(linkedList);
