@@ -59,6 +59,20 @@ class SinglyLinkedList {
     }
     return temp;
   }
+
+  //Addes element to start
+  unShift(val) {
+    const newNode = new Node(val);
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+    this.length++;
+    return this;
+  }
 }
 
 let linkedList = new SinglyLinkedList();
@@ -68,4 +82,5 @@ linkedList.push("man");
 linkedList.push("??");
 linkedList.pop();
 linkedList.shift();
+linkedList.unShift("@");
 console.log(linkedList);
