@@ -73,6 +73,18 @@ class SinglyLinkedList {
     this.length++;
     return this;
   }
+
+  //Get method ->TO access element at a given index
+  get(idx) {
+    if (idx < 0 || idx >= this.length) return null;
+    let count = 0;
+    let current = this.head;
+    while (count !== idx) {
+      current = current.next;
+      count++;
+    }
+    return current;
+  }
 }
 
 let linkedList = new SinglyLinkedList();
@@ -83,4 +95,5 @@ linkedList.push("??");
 linkedList.pop();
 linkedList.shift();
 linkedList.unShift("@");
+linkedList.get(2); // we consider index from 0
 console.log(linkedList);
