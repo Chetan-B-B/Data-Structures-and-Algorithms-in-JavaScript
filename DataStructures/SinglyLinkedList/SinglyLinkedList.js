@@ -120,6 +120,21 @@ class SinglyLinkedList {
     this.length--;
     return removed;
   }
+
+  reverse() {
+    let node = this.head;
+    this.head = this.tail;
+    this.tail = node;
+    let next;
+    let prev = null;
+    for (let i = 0; i < this.length; i++) {
+      next = node.next;
+      node.next = prev;
+      prev = node;
+      node = next;
+    }
+    return this;
+  }
 }
 
 let linkedList = new SinglyLinkedList();
@@ -134,4 +149,5 @@ linkedList.get(2); // we consider index from 0
 linkedList.set(2, "set() is working ");
 linkedList.insert(2, "insert()");
 linkedList.remove(2, "insert()");
+linkedList.reverse();
 console.log(linkedList);
