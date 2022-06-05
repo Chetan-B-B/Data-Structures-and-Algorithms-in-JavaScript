@@ -86,10 +86,24 @@ class SinglyLinkedList {
     return current;
   }
 
+  //Idx=> index
   set(idx, val) {
     let foundnode = this.get(idx);
     if (!foundnode) return false;
     foundnode.val = val;
+    return true;
+  }
+  insert(idx, val) {
+    if (idx < 0 || idx > this.length) return false;
+    if (idx == this.length) return !!this.push(val);
+    if (idx == 0) return !!this.unShift(val);
+
+    let newNode = new Node(val);
+    let prevNode = this.get(idx - 1);
+    let temp = prevNode.next;
+    prevNode.next = newNode;
+    newNode.next = temp;
+    this.length++;
     return true;
   }
 }
@@ -104,4 +118,5 @@ linkedList.shift();
 linkedList.unShift("@");
 linkedList.get(2); // we consider index from 0
 linkedList.set(2, "set() is working ");
-console.log(linkedList);
+linkedList.insert(2, "insert()");
+console.log(linkedList.get(3));
