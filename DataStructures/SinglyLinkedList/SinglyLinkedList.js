@@ -105,6 +105,21 @@ class SinglyLinkedList {
     this.length++;
     return true;
   }
+
+  remove(idx) {
+    if (idx < 0 || idx >= this.length) return undefined;
+    if (idx === this.length - 1) return !!this.pop();
+    if (idx === 0) return !!this.shift();
+
+    let prevNode = this.get(idx - 1);
+    // The following 2 lines also valid
+    // let nextNode = this.get(index + 1);
+    // prevNode.next = nextNode;
+    let removed = prevNode.next;
+    prevNode.next = removed.next;
+    this.length--;
+    return removed;
+  }
 }
 
 let linkedList = new SinglyLinkedList();
@@ -118,4 +133,5 @@ linkedList.unShift("@");
 linkedList.get(2); // we consider index from 0
 linkedList.set(2, "set() is working ");
 linkedList.insert(2, "insert()");
-console.log(linkedList.get(3));
+linkedList.remove(2, "insert()");
+console.log(linkedList);
