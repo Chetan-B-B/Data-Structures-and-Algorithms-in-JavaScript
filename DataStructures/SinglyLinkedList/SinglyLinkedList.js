@@ -85,6 +85,13 @@ class SinglyLinkedList {
     }
     return current;
   }
+
+  set(idx, val) {
+    let foundnode = this.get(idx);
+    if (!foundnode) return false;
+    foundnode.val = val;
+    return true;
+  }
 }
 
 let linkedList = new SinglyLinkedList();
@@ -96,4 +103,5 @@ linkedList.pop();
 linkedList.shift();
 linkedList.unShift("@");
 linkedList.get(2); // we consider index from 0
+linkedList.set(2, "set() is working ");
 console.log(linkedList);
