@@ -26,9 +26,27 @@ class DoublyLinkedList {
     this.length++;
     return this;
   }
+
+  pop() {
+    // We can also check for tail | head | length = 0
+    if (!this.head) return undefined;
+    let removedNode = this.tail;
+    if (this.length == 1) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      this.tail = removedNode.prev;
+      this.tail.next = null;
+      removedNode.prev = null; //This is to remove the link from last to its prev ex: 10 , 20, 30 if we pop() then we need to revove link from 30 to 20 (backward link) otherwise using the poped element anyone can access the entire list itself .For safer side we need to remove that link.
+    }
+    this.length--;
+    return removedNode;
+  }
 }
 
 const dll = new DoublyLinkedList();
 dll.push(2);
 dll.push(4);
+dll.push(8);
+dll.pop();
 console.log(dll);
