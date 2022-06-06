@@ -42,11 +42,29 @@ class DoublyLinkedList {
     this.length--;
     return removedNode;
   }
+
+  shift() {
+    if (!this.head) return undefined;
+    let oldHead = this.head;
+    if (this.length == 1) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      this.head = oldHead.next;
+      oldHead.next = null;
+      this.head.prev = null;
+    }
+    this.length--;
+    return oldHead;
+  }
 }
 
 const dll = new DoublyLinkedList();
 dll.push(2);
 dll.push(4);
 dll.push(8);
+dll.push(10);
+dll.push(12);
 dll.pop();
+console.log(dll.shift());
 console.log(dll);
