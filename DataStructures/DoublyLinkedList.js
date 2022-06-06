@@ -71,6 +71,27 @@ class DoublyLinkedList {
     this.length++;
     return this;
   }
+
+  get(idx) {
+    if (idx < 0 || idx >= this.length) return undefined;
+    let current, count;
+    if (idx <= this.length / 2) {
+      count = 0;
+      current = this.head;
+      while (count != idx) {
+        current = current.next;
+        count++;
+      }
+    } else {
+      count = this.length - 1;
+      current = this.tail;
+      while (count != idx) {
+        current = current.prev;
+        count--;
+      }
+    }
+    return current;
+  }
 }
 
 const dll = new DoublyLinkedList();
@@ -82,4 +103,5 @@ dll.push(12);
 dll.pop();
 console.log(dll.shift());
 dll.unshift(2);
+console.log(dll.get(3));
 console.log(dll);
