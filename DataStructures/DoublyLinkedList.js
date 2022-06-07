@@ -92,6 +92,13 @@ class DoublyLinkedList {
     }
     return current;
   }
+
+  set(idx, val) {
+    let foundNode = this.get(idx);
+    if (!foundNode) return undefined;
+    foundNode.val = val;
+    return true;
+  }
 }
 
 const dll = new DoublyLinkedList();
@@ -104,4 +111,5 @@ dll.pop();
 console.log(dll.shift());
 dll.unshift(2);
 console.log(dll.get(3));
+console.log(dll.set(3), undefined);
 console.log(dll);
