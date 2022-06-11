@@ -99,6 +99,23 @@ class DoublyLinkedList {
     foundNode.val = val;
     return true;
   }
+
+  insert(idx, val) {
+    if (idx < 0 || idx > this.length) return false;
+    if (idx == 0) return !!this.push(val);
+    if (idx == this.length) this.unshift(val);
+
+    let newNode = new Node(val);
+    let beforeNode = this.get(idx - 1);
+    let afterNode = beforeNode.next;
+    newNode.prev = beforeNode;
+    beforeNode.next = newNode;
+
+    newNode.next = afterNode;
+    afterNode.prev = newNode;
+    this.length++;
+    return true;
+  }
 }
 
 const dll = new DoublyLinkedList();
@@ -108,8 +125,10 @@ dll.push(8);
 dll.push(10);
 dll.push(12);
 dll.pop();
-console.log(dll.shift());
+// console.log(dll.shift());
 dll.unshift(2);
-console.log(dll.get(3));
-console.log(dll.set(3), undefined);
+// console.log(dll.get(3));
+// console.log(dll.set(3, 11));
+console.log(dll.insert(1, 3));
+console.log(dll.get(1));
 console.log(dll);
