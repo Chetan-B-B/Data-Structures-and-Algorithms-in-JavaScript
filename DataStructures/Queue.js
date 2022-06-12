@@ -48,3 +48,9 @@ queue.deQueue();
 queue.deQueue();
 queue.deQueue();
 console.log(queue);
+
+//Big O for Queue
+//insertion -> O(1)
+//deletion -> O(1)
+//Access -> O(n)
+//Searching -> O(n)
