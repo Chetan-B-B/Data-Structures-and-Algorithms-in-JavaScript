@@ -155,3 +155,9 @@ console.log(dll.insert(1, 3));
 console.log(dll.get(1));
 console.log(dll.delete(1));
 console.log(dll);
+
+//Big O for Dll
+//insertion -> O(1)
+//deletion -> O(1)
+//Access -> O(n)
+//Searching -> O(n)

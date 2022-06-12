@@ -151,3 +151,9 @@ linkedList.insert(2, "insert()");
 linkedList.remove(2, "insert()");
 linkedList.reverse();
 console.log(linkedList);
+
+//Big O for sll
+//insertion -> O(1)
+//deletion -> O(1)
+//Access -> O(n)
+//Searching -> O(n)
