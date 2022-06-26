@@ -76,6 +76,7 @@ class BinarySearchTree {
     return found;
   }
 
+  //BFs and Dfs are not only applied to Binary search tree they can be applied to other trees also
   // ? Breadth first search
   bfs() {
     let queue = [], // push() and shift()
@@ -91,18 +92,58 @@ class BinarySearchTree {
     }
     return visted;
   }
+
+  dfsPreOrder() {
+    let data = [];
+    let current = this.root;
+    function traverse(node) {
+      //   if (!node) return undefined;
+      data.push(node.val);
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+    }
+    traverse(current);
+    return data;
+  }
+  dfsPostOrder() {
+    let data = [];
+    let current = this.root;
+    function traverse(node) {
+      //   if (!node) return undefined;
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+      data.push(node.val);
+    }
+    traverse(current);
+    return data;
+  }
+  dfsInOrder() {
+    let data = [];
+    let current = this.root;
+    function traverse(node) {
+      //   if (!node) return undefined;
+      if (node.left) traverse(node.left);
+      data.push(node.val);
+      if (node.right) traverse(node.right);
+    }
+    traverse(current);
+    return data;
+  }
 }
 
 let bst = new BinarySearchTree();
 bst.insert(10);
+bst.insert(6);
+bst.insert(3);
 bst.insert(8);
-bst.insert(11);
-bst.insert(9);
-bst.insert(2);
-bst.insert(3);
-bst.insert(3);
+bst.insert(15);
+bst.insert(20);
+bst.insert(20);
 console.log(bst.search(10));
 console.log(bst.search(3));
 console.log(bst.search(1));
 console.log(bst.bfs());
+console.log(bst.dfsPreOrder());
+console.log(bst.dfsPostOrder());
+console.log(bst.dfsInOrder());
 console.log(bst.root);
